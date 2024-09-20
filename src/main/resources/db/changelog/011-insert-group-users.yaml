@@ -1,0 +1,25 @@
+databaseChangeLog:
+  - changeSet:
+      id: 11
+      author: jkb
+      changes:
+        - loadData:
+            file: db/changelog/test-dataset/group-users.csv
+            tableName: groups_users
+            separator: ','
+            columns:
+              - column:
+                  name: user_id
+                  type: bigint
+              - column:
+                  name: group_id
+                  type: bigint
+              - column:
+                  name: unread_messages
+                  type: bigint
+              - column:
+                  name: role
+                  type: varchar(50)
+              - column:
+                  name: added
+                  type: timestamp

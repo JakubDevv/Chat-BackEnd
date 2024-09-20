@@ -1,0 +1,43 @@
+databaseChangeLog:
+  - changeSet:
+      id: 7
+      author: jkb
+      changes:
+        - loadData:
+            file: db/changelog/test-dataset/users.csv
+            tableName: users_
+            separator: ';'
+            columns:
+              - column:
+                  name: created
+                  type: timestamp
+              - column:
+                  name: email
+                  type: varchar(50)
+              - column:
+                  name: first_name
+                  type: varchar(50)
+              - column:
+                  name: last_name
+                  type: varchar(50)
+              - column:
+                  name: password
+                  type: varchar(50)
+              - column:
+                  name: username
+                  type: varchar(50)
+              - column:
+                  name: country
+                  type: varchar(50)
+              - column:
+                  name: city
+                  type: varchar(50)
+              - column:
+                  name: birth
+                  type: timestamp
+              - column:
+                  name: bgcolor
+                  type: varchar(50)
+              - column:
+                  name: last_activity
+                  type: timestamp

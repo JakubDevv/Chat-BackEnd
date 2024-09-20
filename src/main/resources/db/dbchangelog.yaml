@@ -1,0 +1,27 @@
+databaseChangeLog:
+  - include:
+      file: db/changelog/001-create-table-users.yaml
+  - include:
+      file: db/changelog/002-create-table-friends.yaml
+  - include:
+      file: db/changelog/003-create-table-interests.yaml
+  - include:
+      file: db/changelog/004-create-table-groups.yaml
+  - include:
+      file: db/changelog/005-create-table-group-users.yaml
+  - include:
+      file: db/changelog/006-create-table-messages.yaml
+  - include:
+      file: db/changelog/007-insert-users.yaml
+  - include:
+      file: db/changelog/008-insert-friends.yaml
+  - include:
+      file: db/changelog/009-insert-interests.yaml
+  - include:
+      file: db/changelog/010-insert-groups.yaml
+  - include:
+      file: db/changelog/011-insert-group-users.yaml
+  - include:
+      file: db/changelog/012-insert-messages.yaml
+  - include:
+      file: db/changelog/013-create-table-notifications.yaml

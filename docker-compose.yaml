@@ -1,0 +1,37 @@
+services:
+
+  databased:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: db2
+    ports:
+      - "5432:5432"
+    networks:
+      - good_network
+
+  backend:
+    build: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - databased
+    environment:
+      DB_SERVER: databased
+      DB_PORT: 5432
+      DB_NAME: db2
+      DB_USER: root
+      DB_PASSWORD: root
+      SPRING_PROFILES_ACTIVE: dev
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+    networks:
+      - good_network
+
+networks:
+  good_network:
+    name: good_network
+    driver: bridge
+
+

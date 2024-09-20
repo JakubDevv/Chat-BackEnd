@@ -1,0 +1,22 @@
+databaseChangeLog:
+  - changeSet:
+      id: 8
+      author: jkb
+      changes:
+        - loadData:
+            file: db/changelog/test-dataset/friends.csv
+            tableName: friends
+            separator: ','
+            columns:
+              - column:
+                  name: user_id
+                  type: bigint
+              - column:
+                  name: friend_id
+                  type: bigint
+              - column:
+                  name: last_update
+                  type: timestamp
+              - column:
+                  name: status
+                  type: varchar(50)

@@ -1,0 +1,16 @@
+databaseChangeLog:
+  - changeSet:
+      id: 9
+      author: jkb
+      changes:
+        - loadData:
+            file: db/changelog/test-dataset/interests.csv
+            tableName: interests
+            separator: ','
+            columns:
+              - column:
+                  name: value
+                  type: varchar(50)
+              - column:
+                  name: fk_interests_users
+                  type: bigint

@@ -1,0 +1,73 @@
+databaseChangeLog:
+  - changeSet:
+      id: 6
+      author: jkb
+      changes:
+        - createTable:
+            tableName: messages
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: sender_id
+                  type: bigint
+                  constraints:
+                    nullable: true
+              - column:
+                  name: group_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: content
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: sent_at
+                  type: timestamp
+                  constraints:
+                    nullable: false
+              - column:
+                  name: deleted
+                  type: boolean
+                  constraints:
+                    nullable: false
+              - column:
+                  name: image
+                  type: boolean
+                  constraints:
+                    nullable: false
+              - column:
+                  name: response_id
+                  type: bigint
+                  constraints:
+                    nullable: true
+              - column:
+                  name: notification_type
+                  type: varchar(50)
+                  constraints:
+                    nullable: true
+        - addForeignKeyConstraint:
+            baseTableName: messages
+            baseColumnNames: sender_id
+            referencedTableName: users_
+            referencedColumnNames: id
+            constraintName: user_id
+        - addForeignKeyConstraint:
+            baseTableName: messages
+            baseColumnNames: group_id
+            referencedTableName: groups
+            referencedColumnNames: id
+            constraintName: group_id
+        - addForeignKeyConstraint:
+            baseTableName: messages
+            baseColumnNames: response_id
+            referencedTableName: messages
+            referencedColumnNames: id
+            constraintName: response_id

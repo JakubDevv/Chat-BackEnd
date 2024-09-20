@@ -1,0 +1,22 @@
+databaseChangeLog:
+  - changeSet:
+      id: 10
+      author: jkb
+      changes:
+        - loadData:
+            file: db/changelog/test-dataset/groups.csv
+            tableName: groups
+            separator: ','
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+              - column:
+                  name: name
+                  type: varchar(50)
+              - column:
+                  name: created
+                  type: timestamp
+              - column:
+                  name: isduo
+                  type: boolean

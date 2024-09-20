@@ -1,0 +1,42 @@
+databaseChangeLog:
+  - changeSet:
+      id: 2
+      author: jkb
+      changes:
+        - createTable:
+            tableName: friends
+            columns:
+              - column:
+                  name: user_id
+                  type: bigint
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: friend_id
+                  type: bigint
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: last_update
+                  type: timestamp
+                  constraints:
+                    nullable:
+                      true
+              - column:
+                  name: status
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+        - addForeignKeyConstraint:
+            baseTableName: friends
+            baseColumnNames: friend_id
+            referencedTableName: users_
+            referencedColumnNames: id
+            constraintName: friend_id
+        - addForeignKeyConstraint:
+            baseTableName: friends
+            baseColumnNames: user_id
+            referencedTableName: users_
+            referencedColumnNames: id
+            constraintName: user_id

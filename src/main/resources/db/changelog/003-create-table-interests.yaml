@@ -1,0 +1,31 @@
+databaseChangeLog:
+  - changeSet:
+      id: 3
+      author: jkb
+      changes:
+        - createTable:
+            tableName: interests
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: value
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: fk_interests_users
+                  type: bigint
+                  constraints:
+                    nullable: true
+        - addForeignKeyConstraint:
+            baseTableName: interests
+            baseColumnNames: fk_interests_users
+            referencedTableName: users_
+            referencedColumnNames: id
+            constraintName: fk_interests_users

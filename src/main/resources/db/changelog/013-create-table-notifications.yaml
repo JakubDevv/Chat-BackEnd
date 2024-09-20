@@ -1,0 +1,52 @@
+databaseChangeLog:
+  - changeSet:
+      id: 13
+      author: jkb
+      changes:
+        - createTable:
+            tableName: notifications
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: sender_id
+                  type: bigint
+                  constraints:
+                    nullable: true
+              - column:
+                  name: receiver_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: sent_time
+                  type: timestamp
+                  constraints:
+                    nullable: false
+              - column:
+                  name: group_name
+                  type: varchar(50)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: notification_type
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+        - addForeignKeyConstraint:
+            baseTableName: notifications
+            baseColumnNames: sender_id
+            referencedTableName: users_
+            referencedColumnNames: id
+            constraintName: user_idx
+        - addForeignKeyConstraint:
+            baseTableName: notifications
+            baseColumnNames: receiver_id
+            referencedTableName: users_
+            referencedColumnNames: id
+            constraintName: user_idxf

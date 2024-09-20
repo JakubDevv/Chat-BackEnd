@@ -1,0 +1,34 @@
+databaseChangeLog:
+  - changeSet:
+      id: 12
+      author: jkb
+      changes:
+        - loadData:
+            file: db/changelog/test-dataset/messages.csv
+            tableName: messages
+            separator: ','
+            columns:
+              - column:
+                  name: sender_id
+                  type: bigint
+              - column:
+                  name: group_id
+                  type: bigint
+              - column:
+                  name: content
+                  type: varchar(250)
+              - column:
+                  name: sent_at
+                  type: timestamp
+              - column:
+                  name: deleted
+                  type: boolean
+              - column:
+                  name: image
+                  type: boolean
+              - column:
+                  name: response_id
+                  type: bigint
+              - column:
+                  name: notification_type
+                  type: varchar(250)
